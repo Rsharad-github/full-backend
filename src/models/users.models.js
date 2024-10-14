@@ -52,7 +52,7 @@ userSchema.pre("save",async function(next){//arrow  func has no access to this
   if (!this.isModified("password")){
     return next();
   }
-  this.password =  bcrypt.hash(this.password,10)//10 salt or hash round
+  this.password = await bcrypt.hash(this.password,10)//10 salt or hash round
   next()
 })//save  karne  se pehle callback run karna hai
 
